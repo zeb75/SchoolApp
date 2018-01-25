@@ -13,6 +13,6 @@ namespace SchoolApp.Models
 
         public string Description { get; set; }
 
-        public Course AssignedTo { get; set; }
+        public Course AssignedToCourse { get; set; }
     }
 }
