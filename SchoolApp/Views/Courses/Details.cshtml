@@ -4,10 +4,8 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Course</h4>
+    <h2>Course details</h2>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,20 +26,72 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-@foreach (var item in Model.Teachers)
-{
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => item.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => item.Name)
-        </dd>
+<hr />
+<h4>Teachers</h4>
+@Html.ActionLink("Add", "AddTeacher", new { cId = Model.Id }) |
+@*@Html.ActionLink("Remove", "RemoveTeacher", new { cId = Model.Id })*@
+<div>
+    @foreach (var item in Model.Teachers)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
+        </dl>
+    }
 
-    </dl>
-}
+</div>
+<hr />
+<h4>Students</h4>
+@Html.ActionLink("Add", "AddStudent", new { cId = Model.Id }) |
+@Html.ActionLink("Remove", "RemoveStudent", new { cId = Model.Id })
+<div>
+    @foreach (var item in Model.Students)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.LastName)
+            </dd>
+        </dl>
+
+    }
+
+</div>
+<hr />
+<h4>Assignments</h4>
+@Html.ActionLink("Add", "AddAssignment", new { cId = Model.Id }) |
+@*@Html.ActionLink("Remove", "RemoveAssignment", new { cId = Model.Id })*@
+<div>
+    @foreach (var item in Model.Assignments)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
+        </dl>
+    }
+</div>
+
+@Html.ActionLink("Back to List", "Index")
+
+
+

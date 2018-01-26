@@ -1,14 +1,12 @@
-﻿@model IEnumerable<SchoolApp.Models.Course>
+﻿@model IEnumerable<SchoolApp.Models.Assignment>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AddAssignment";
 }
 
-<h2>Courses</h2>
+<h2>Add assignment to course</h2>
 
-<p>
-    @Html.ActionLink("Add course", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -29,9 +27,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Add", "AssignmentToCourse", new { aId = item.Id, cId = ViewBag.cId })
         </td>
     </tr>
 }

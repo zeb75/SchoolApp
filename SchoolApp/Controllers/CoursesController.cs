@@ -123,5 +123,115 @@ namespace SchoolApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public ActionResult AddStudent(int cId)
+        {
+            List<Student> students = db.Students.ToList();
+            ViewBag.cId = cId;
+            return View(students);
+        }
+        [HttpGet]
+        public ActionResult StudentToCourse(int sId, int cId)
+        {
+            Student student = db.Students.SingleOrDefault(s => s.Id == sId);
+
+            Course course = db.Courses.Include("Students").SingleOrDefault(c => c.Id == cId);
+
+            course.Students.Add(student);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
+        [HttpGet]
+        public ActionResult RemoveStudent(int cId)
+        {
+            List<Student> students = db.Students.ToList();
+            ViewBag.cId = cId;
+            return View(students);
+        }
+        [HttpGet]
+        public ActionResult RemoveStudentFromCourse(int sId, int cId)
+        {
+            Student student = db.Students.SingleOrDefault(s => s.Id == sId);
+
+            Course course = db.Courses.Include("Students").SingleOrDefault(c => c.Id == cId);
+
+            course.Students.Remove(student);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
+        [HttpGet]
+        public ActionResult AddTeacher(int cId)
+        {
+            List<Teacher> teachers = db.Teachers.ToList();
+            ViewBag.cId = cId;
+            return View(teachers);
+        }
+
+        [HttpGet]
+        public ActionResult TeacherToCourse(int tId, int cId)
+        {
+            Teacher teacher = db.Teachers.SingleOrDefault(t => t.Id == tId);
+
+            Course course = db.Courses.Include("Teachers").SingleOrDefault(c => c.Id == cId);
+
+            course.Teachers.Add(teacher);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
+        [HttpGet]
+        public ActionResult RemoveTeacher(int cId)
+        {
+            List<Teacher> teachers = db.Teachers.ToList();
+            ViewBag.cId = cId;
+            return View(teachers);
+        }
+        [HttpGet]
+        public ActionResult RemoveTeacherFromCourse(int tId, int cId)
+        {
+            Teacher teacher = db.Teachers.SingleOrDefault(t => t.Id == tId);
+
+            Course course = db.Courses.Include("Teachers").SingleOrDefault(c => c.Id == cId);
+
+            course.Teachers.Remove(teacher);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
+        [HttpGet]
+        public ActionResult AddAssignment(int cId)
+        {
+            List<Assignment> assignments = db.Assignments.ToList();
+            ViewBag.cId = cId;
+            return View(assignments);
+        }
+
+        [HttpGet]
+        public ActionResult AssignmentToCourse(int aId, int cId)
+        {
+            Assignment assignment = db.Assignments.SingleOrDefault(a => a.Id == aId);
+
+            Course course = db.Courses.Include("Assignments").SingleOrDefault(c => c.Id == cId);
+
+            course.Assignments.Add(assignment);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
+    
     }
+
 }
