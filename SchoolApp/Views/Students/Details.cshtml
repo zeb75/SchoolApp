@@ -56,3 +56,18 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<h2>Assigned courses</h2>
+<div>
+    @foreach (var item in Model.Courses)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
+        </dl>
+    }
+</div>

@@ -230,8 +230,27 @@ namespace SchoolApp.Controllers
 
             return RedirectToAction("Details", new { id = cId });
         }
+        [HttpGet]
+        public ActionResult RemoveAssignment(int cId)
+        {
+            List<Assignment> assignments = db.Assignments.ToList();
+            ViewBag.cId = cId;
+            return View(assignments);
+        }
+        [HttpGet]
+        public ActionResult RemoveAssignmentFromCourse(int aId, int cId)
+        {
+            Assignment assignment = db.Assignments.SingleOrDefault(a => a.Id == aId);
 
-    
+            Course course = db.Courses.Include("Assignments").SingleOrDefault(c => c.Id == cId);
+
+            course.Assignments.Remove(assignment);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = cId });
+        }
+
     }
 
 }

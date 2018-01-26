@@ -168,6 +168,7 @@
     <Content Include="Views\Courses\AddAssignment.cshtml" />
     <Content Include="Views\Courses\RemoveStudent.cshtml" />
     <Content Include="Views\Courses\RemoveTeacher.cshtml" />
+    <Content Include="Views\Courses\RemoveAssignment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

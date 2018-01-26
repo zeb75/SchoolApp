@@ -20,7 +20,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Remove", "RemoveTeacherFromCourse", new { sId = item.Id, cId = ViewBag.cId })
+            @Html.ActionLink("Remove", "RemoveTeacherFromCourse", new { tId = item.Id, cId = ViewBag.cId })
         </td>
     </tr>
 }

@@ -27,7 +27,7 @@ namespace SchoolApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Include("Courses").SingleOrDefault(x => x.Id == id);
             if (student == null)
             {
                 return HttpNotFound();
