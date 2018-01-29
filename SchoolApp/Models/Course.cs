@@ -8,7 +8,7 @@ namespace SchoolApp.Models
     public class Course
     {
         public int Id { get; set; }
-
+       
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -17,6 +17,6 @@ namespace SchoolApp.Models
 
         public List<Teacher> Teachers { get; set; }
 
-        public List<Assignment> Assignments { get; set; }
+        public virtual List<Assignment> Assignments { get; set; }
     }
 }

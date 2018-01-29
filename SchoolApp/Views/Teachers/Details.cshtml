@@ -24,3 +24,25 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<hr />
+<h2>Teaching courses and assignments</h2>
+<div>
+    @foreach (var item in Model.Courses)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+                <ul>
+                    @foreach (var assign in item.Assignments)
+        {
+            <li>@assign.Name</li>
+}
+                </ul>
+            </dd>
+        </dl>
+    }
+</div>
+

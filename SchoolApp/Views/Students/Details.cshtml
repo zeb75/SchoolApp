@@ -56,8 +56,8 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-<h2>Assigned courses</h2>
+<hr />
+<h2>Courses and assigments</h2>
 <div>
     @foreach (var item in Model.Courses)
     {
@@ -67,7 +67,14 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => item.Name)
+                <ul>
+                    @foreach (var assign in item.Assignments)
+                    {
+                        <li>@assign.Name</li>
+                    }
+                </ul>
             </dd>
         </dl>
     }
 </div>
+
